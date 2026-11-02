@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="InstitutionAI is building an AI-powered information assistant for schools and colleges, helping students and parents get answers from institution-approved information.">
+  <meta name="theme-color" content="#0b1220">
+  <title>InstitutionAI — Every Institution. One Intelligent Assistant.</title>
+  <style>
+    :root {
+      --bg: #0b1220; --panel: #111c30; --panel2: #15233a;
+      --text: #edf3ff; --muted: #a9b8d0; --line: rgba(196,214,245,.14);
+      --blue: #72a7ff; --cyan: #6de0d0; --white: #fff;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text); background:
+      radial-gradient(ellipse at 80% 0%, rgba(67,119,205,.22), transparent 38%),
+      radial-gradient(ellipse at 0% 30%, rgba(43,181,166,.10), transparent 34%), var(--bg);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: auto; }
+    header { border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; backdrop-filter: blur(16px); background: rgba(11,18,32,.82); }
+    nav { min-height: 76px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { display:flex; align-items:center; gap:11px; font-weight:800; letter-spacing:-.4px; font-size:19px; }
+    .logo { width:36px; height:36px; display:grid; place-items:center; border-radius:11px; color:#071321; font-weight:900; background:linear-gradient(135deg,var(--blue),var(--cyan)); }
+    .navlinks { display:flex; align-items:center; gap:26px; color:var(--muted); font-size:14px; }
+    .navlinks a:hover { color:var(--white); }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 18px; border-radius:10px; font-weight:700; font-size:14px; border:1px solid transparent; transition:.2s; }
+    .btn-primary { background:linear-gradient(110deg,var(--blue),var(--cyan)); color:#081321; }
+    .btn-primary:hover { transform:translateY(-2px); filter:brightness(1.06); }
+    .btn-ghost { border-color:var(--line); color:var(--text); }
+    .hero { padding:88px 0 76px; display:grid; grid-template-columns:1.05fr .95fr; gap:52px; align-items:center; }
+    .eyebrow { display:inline-flex; align-items:center; gap:9px; color:#a8d9ff; background:rgba(114,167,255,.1); border:1px solid rgba(114,167,255,.22); border-radius:99px; padding:7px 12px; font-size:12px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; }
+    .dot { width:7px; height:7px; border-radius:50%; background:var(--cyan); box-shadow:0 0 12px var(--cyan); }
+    h1 { font-size:clamp(42px,6vw,68px); line-height:1.05; letter-spacing:-2.8px; margin:22px 0 20px; }
+    .gradient { background:linear-gradient(100deg,#91baff,#72e3d1); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .lead { max-width:590px; color:var(--muted); font-size:18px; line-height:1.75; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
+    .note { color:#8293ad; font-size:12px; margin-top:18px; }
+    .mock { border:1px solid rgba(172,201,245,.2); background:linear-gradient(145deg,rgba(24,39,64,.96),rgba(13,23,40,.96)); border-radius:22px; padding:20px; box-shadow:0 30px 90px rgba(0,0,0,.32); transform:perspective(1000px) rotateY(-4deg) rotateX(2deg); }
+    .mock-top { display:flex; justify-content:space-between; align-items:center; padding-bottom:15px; border-bottom:1px solid var(--line); color:var(--muted); font-size:12px; }
+    .status { color:var(--cyan); font-size:11px; }
+    .chat-title { font-weight:750; margin:20px 0 5px; font-size:19px; }
+    .chat-sub { color:var(--muted); font-size:12px; margin-bottom:20px; }
+    .bubble { padding:13px 15px; border-radius:14px; font-size:13px; margin:12px 0; max-width:91%; }
+    .user { background:#203451; margin-left:auto; color:#eaf2ff; border-bottom-right-radius:4px; }
+    .bot { background:#172940; border:1px solid rgba(109,224,208,.18); color:#dbe9f8; border-bottom-left-radius:4px; }
+    .source { display:inline-block; color:#8fe2d6; font-size:10px; margin-top:8px; }
+    .inputfake { margin-top:22px; padding:12px 14px; border:1px solid var(--line); border-radius:10px; color:#7e91ad; font-size:12px; }
+    section { padding:76px 0; }
+    .section-head { max-width:690px; margin-bottom:34px; }
+    .kicker { color:var(--cyan); font-size:12px; text-transform:uppercase; letter-spacing:1.5px; font-weight:800; }
+    h2 { font-size:clamp(29px,4vw,42px); letter-spacing:-1.4px; line-height:1.15; margin:12px 0; }
+    .section-head p, .muted { color:var(--muted); }
+    .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .card { background:linear-gradient(145deg,rgba(21,35,58,.88),rgba(14,25,43,.88)); border:1px solid var(--line); border-radius:16px; padding:23px; }
+    .icon { width:42px; height:42px; display:grid; place-items:center; border-radius:12px; color:var(--cyan); background:rgba(109,224,208,.1); font-size:20px; margin-bottom:16px; }
+    h3 { margin:0 0 8px; font-size:17px; }
+    .card p { color:var(--muted); margin:0; font-size:14px; }
+    .how { display:grid; grid-template-columns:.8fr 1.2fr; gap:48px; align-items:start; }
+    .steps { display:grid; gap:12px; }
+    .step { display:flex; gap:16px; padding:18px; border:1px solid var(--line); border-radius:14px; background:rgba(17,28,48,.62); }
+    .num { flex:0 0 30px; height:30px; border-radius:9px; display:grid; place-items:center; color:#071321; background:linear-gradient(135deg,var(--blue),var(--cyan)); font-weight:900; font-size:13px; }
+    .step p { margin:4px 0 0; color:var(--muted); font-size:13px; }
+    .tech { display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+    .pill { padding:8px 12px; border:1px solid var(--line); border-radius:99px; color:#c7d8f0; background:rgba(255,255,255,.025); font-size:12px; font-weight:650; }
+    .statusbox { border:1px solid rgba(109,224,208,.22); background:linear-gradient(110deg,rgba(109,224,208,.08),rgba(114,167,255,.08)); border-radius:18px; padding:26px; display:flex; justify-content:space-between; align-items:center; gap:22px; }
+    .statusbox p { color:var(--muted); margin:7px 0 0; }
+    .tag { color:#8fe2d6; border:1px solid rgba(109,224,208,.25); border-radius:99px; padding:7px 11px; white-space:nowrap; font-size:11px; font-weight:800; }
+    .cta { text-align:center; padding:52px 28px; border-radius:22px; border:1px solid var(--line); background:radial-gradient(ellipse at 50% 0%,rgba(114,167,255,.16),transparent 65%),#111c30; }
+    .cta p { max-width:600px; margin:12px auto 24px; color:var(--muted); }
+    footer { border-top:1px solid var(--line); padding:26px 0; color:#8293ad; font-size:12px; }
+    footer .foot { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+    @media(max-width:800px) {
+      .hero,.how { grid-template-columns:1fr; }
+      .hero { padding-top:62px; gap:36px; }
+      .mock { transform:none; }
+      .grid3 { grid-template-columns:1fr; }
+      .navlinks { display:none; }
+      .statusbox { align-items:flex-start; flex-direction:column; }
+    }
+  
+    .live-chat { max-width:760px; margin:0 auto; background:rgba(17,28,48,.82); border:1px solid var(--line); border-radius:18px; padding:24px; }
+    .live-chat label { display:block; color:#c7d8f0; font-size:13px; margin:12px 0 6px; }
+    .live-chat input, .live-chat textarea { width:100%; background:#0b1525; color:#eaf2ff; border:1px solid var(--line); border-radius:10px; padding:12px; font:inherit; }
+    .live-chat textarea { min-height:85px; resize:vertical; }
+    .live-chat button { margin-top:12px; border:0; cursor:pointer; }
+    .chat-log { display:grid; gap:10px; margin-top:18px; }
+    .chat-message { padding:12px 14px; border-radius:12px; font-size:14px; white-space:pre-wrap; line-height:1.55; }
+    .chat-message.user-message { background:#203451; margin-left:10%; }
+    .chat-message.bot-message { background:#172940; border:1px solid rgba(109,224,208,.18); margin-right:10%; }
+    .chat-status { color:var(--muted); font-size:12px; margin-top:10px; min-height:18px; }
+
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#top"><span class="logo">I</span><span>InstitutionAI</span></a>
+      <div class="navlinks">
+        <a href="#problem">Problem</a><a href="#solution">Solution</a><a href="#how">How it works</a><a href="#about">About</a>
+      </div>
+      <a class="btn btn-ghost" href="#contact">Request a demo</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <span class="eyebrow"><span class="dot"></span> AI for education institutions</span>
+      <h1>Every Institution.<br><span class="gradient">One Intelligent Assistant.</span></h1>
+      <p class="lead">InstitutionAI is building an AI-powered information assistant that helps schools and colleges respond to routine student and parent questions using institution-specific information.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#how">Explore the product <span aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#contact">Discuss a pilot</a>
+      </div>
+      <p class="note">A working backend prototype is under development. We are preparing for early institution feedback and pilot conversations.</p>
+    </div>
+    <div class="mock" aria-label="Illustrative chatbot interface">
+      <div class="mock-top"><span>INSTITUTIONAI · ASSISTANT PREVIEW</span><span class="status">● Prototype concept</span></div>
+      <div class="chat-title">Hello! How can I help?</div>
+      <div class="chat-sub">An example of an institution-specific conversation</div>
+      <div class="bubble user">When does the school admission process close?</div>
+      <div class="bubble bot">I can help you find that information. The assistant searches the institution's available information before responding.<br><span class="source">↳ Example response flow · illustrative</span></div>
+      <div class="bubble user">Can you tell me about the fee structure?</div>
+      <div class="bubble bot">Ask about admissions, fees, schedules, transport and other common institutional queries.</div>
+      <div class="inputfake">Type your question…</div>
+    </div>
+  </div>
+
+  <section id="problem">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">The problem</div>
+        <h2>Routine questions take time away from people.</h2>
+        <p>Students and parents often need quick answers about admissions, fees, schedules, transport and institutional policies. Staff may have to respond to the same questions repeatedly across calls and messages.</p>
+      </div>
+      <div class="grid3">
+        <article class="card"><div class="icon">↻</div><h3>Repeated enquiries</h3><p>Similar questions can arrive again and again, consuming staff time.</p></article>
+        <article class="card"><div class="icon">◷</div><h3>Delayed responses</h3><p>People may not get an answer immediately, especially outside office hours.</p></article>
+        <article class="card"><div class="icon">▤</div><h3>Scattered information</h3><p>Useful details may be spread across notices, documents and webpages.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="solution">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">The solution</div>
+        <h2>Answers grounded in each institution's information.</h2>
+        <p>InstitutionAI is designed to retrieve relevant information from an institution's knowledge base and use it to help generate a useful response—rather than relying only on generic chatbot knowledge.</p>
+      </div>
+      <div class="grid3">
+        <article class="card"><div class="icon">⌕</div><h3>Institution-specific retrieval</h3><p>Find relevant passages from the information provided for that institution.</p></article>
+        <article class="card"><div class="icon">✦</div><h3>AI-generated responses</h3><p>Use a language model to turn retrieved information into a natural-language answer.</p></article>
+        <article class="card"><div class="icon">◫</div><h3>Built for common enquiries</h3><p>Designed around topics such as admissions, fees, schedules, transport and policies.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap how">
+      <div>
+        <div class="kicker">How it works</div>
+        <h2>From an institutional document to a helpful answer.</h2>
+        <p class="muted">The current prototype combines retrieval and generation in a backend workflow.</p>
+        <div class="tech"><span class="pill">FastAPI</span><span class="pill">Gemini</span><span class="pill">ChromaDB</span><span class="pill">MySQL</span><span class="pill">RAG</span></div>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="num">1</span><div><h3>Institution information</h3><p>Relevant institutional content is added to the knowledge base.</p></div></div>
+        <div class="step"><span class="num">2</span><div><h3>Question arrives</h3><p>A student or parent asks a question through the chatbot interface/API.</p></div></div>
+        <div class="step"><span class="num">3</span><div><h3>Relevant context is retrieved</h3><p>The retrieval layer searches for information related to the question.</p></div></div>
+        <div class="step"><span class="num">4</span><div><h3>AI prepares a response</h3><p>The language model uses the retrieved context to generate an answer.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="live-demo">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Live backend demo</div>
+        <h2>Try the InstitutionAI assistant.</h2>
+        <p>This demo sends your question to the FastAPI backend. It can answer only from documents already stored for the institution ID you enter.</p>
+      </div>
+      <div class="live-chat">
+        <label for="institution-id">Institution ID</label>
+        <input id="institution-id" type="text" value="1" autocomplete="off">
+        <label for="question-input">Your question</label>
+        <textarea id="question-input" placeholder="For example: What documents are required for admission?"></textarea>
+        <button class="btn btn-primary" id="send-question" type="button">Send question →</button>
+        <div class="chat-status" id="chat-status" role="status" aria-live="polite">Backend URL: http://127.0.0.1:8000</div>
+        <div class="chat-log" id="chat-log" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Development status</div>
+        <h2>Building, testing and learning with institutions.</h2>
+        <p>InstitutionAI is at the prototype stage. The backend workflow is being developed with FastAPI, Gemini, ChromaDB and MySQL. The next focus is strengthening the product experience, validating real institutional needs and preparing pilot deployments.</p>
+      </div>
+      <div class="statusbox">
+        <div><h3>Current stage: working backend prototype</h3><p>Early product development · Customer validation and pilot discussions are next.</p></div>
+        <span class="tag">IN DEVELOPMENT</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="cta">
+        <div class="kicker">Let's explore a pilot</div>
+        <h2>Make institutional information easier to access.</h2>
+        <p>Are you part of a school or college interested in exploring an AI-powered information assistant? Get in touch to discuss the problem, a demo and possible pilot collaboration.</p>
+        <!-- Replace the placeholder email below with your real contact email before publishing. -->
+        <a class="btn btn-primary" href="mailto:REPLACE-WITH-YOUR-EMAIL@example.com?subject=InstitutionAI%20Demo%20Enquiry">Contact InstitutionAI ↗</a>
+        <p class="note">Before publishing, replace the placeholder email address in this button with your own email.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot"><span>© 2026 InstitutionAI. All rights reserved.</span><span>Every Institution. One Intelligent Assistant.</span></div>
+</footer>
+  <script src="script.js"></script>
+</body>
+</html>
